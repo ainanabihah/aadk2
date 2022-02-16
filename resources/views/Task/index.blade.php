@@ -61,6 +61,11 @@
                                     @method('patch')
                                     <button class="btn btn-outline-primary" type="submit">Done</button>
                                 </form>
+                                <form action="tasks/{{ $task->id }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                </form>
                             </div>
                             @empty
                                 <p class="text-danger"> No tasks for today</p>
