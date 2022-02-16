@@ -14,7 +14,9 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        return view('Task.index' ,[
+            'tasks' => Task::all(),
+        ]);
     }
 
     /**
@@ -35,7 +37,12 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $task = new Task();
+        $task->name = $request->task;
+        $task->save();
+
+        return redirect('tasks')->with('status', 'Task Created!');
     }
 
     /**
@@ -69,7 +76,11 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        //dd($request->all(), $task);
+        $task->status = true;
+        $task->save();
+
+        return redirect('tasks')->with('status', 'Task Updated');
     }
 
     /**

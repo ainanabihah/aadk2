@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->boolean('status')->default(0); //0 = tak siap lagi || 1 = dah siap
             $table->timestamps();
         });
     }
